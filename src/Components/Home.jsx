@@ -6,6 +6,7 @@ import { SelectionContext } from "./Context/SelectionContext";
 import CollegeGrid from "./CollegeGrid";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CourseDialog from "./CourseDialog";
 
 const BASE_API_KEY = "https://indian-colleges-list.vercel.app/api";
 
@@ -209,7 +210,7 @@ const Home = () => {
 
       // 6- name
       case hasSearch: {
-        console.log(selections.search);
+        // console.log(selections.search);
 
         const filtered = allColleges.filter((college) => {
           // college.institute_name?.toLowerCase().includes(selections.name);
@@ -228,8 +229,6 @@ const Home = () => {
         setFilteredColleges([]);
         break;
     }
-
-    console.log(selections);
   }, [selections, allColleges]);
 
   // notify
@@ -355,6 +354,8 @@ const Home = () => {
           </div>
         </dialog>
       </section>
+      {/* Course dialog */}
+      <CourseDialog/>
     </>
   );
 };;;

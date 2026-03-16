@@ -23,7 +23,7 @@ function Loading({ progress }) {
 
 function OuterLayout({ children }) {
   return (
-    <div className="col-span-full flex flex-col items-center justify-center py-20 gap-3">
+    <div className="col-span-full min-h-[56.5vh] flex flex-col items-center justify-center py-20 gap-3">
       {children}
     </div>
   );
@@ -45,18 +45,19 @@ const CollegeGrid = ({ loading, progress, selections, filteredColleges }) => {
           <OuterLayout>
             <p className="text-white">Now you can search 🔍...</p>
           </OuterLayout>
-        ) : (  
-          filteredColleges.length > 0 && (
-            <>
-            {console.log(filteredColleges)}
-              <FilterStatus filteredCollegesCount={filteredColleges.length} />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-4">
-                {filteredColleges.map((college, id) => (
-                  <CollegeCard key={id} college={college} />
-                ))}
-              </div>
-            </>
-          )
+        ) : filteredColleges.length > 0 ? (
+          <>
+            <FilterStatus filteredCollegesCount={filteredColleges.length} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-4">
+              {filteredColleges.map((college, id) => (
+                <CollegeCard key={id} college={college} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <OuterLayout>
+            <p className="text-white">No College data found...</p>
+          </OuterLayout>
         )}
       </div>
     </div>

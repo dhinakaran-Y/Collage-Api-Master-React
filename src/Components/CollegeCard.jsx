@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { CourseContext } from "./Context/CourseContext";
+
 // CopyField
 function CopyField({ icon, value,accent }) {
 
@@ -14,7 +17,10 @@ function CopyField({ icon, value,accent }) {
   );
 }
 
-const CollegeCard = ({ college}) => {
+const CollegeCard = ({college}) => {
+
+  const { setIsDialogOpen, setCourseArr } = useContext(CourseContext);
+
   return (
     <div className="bg-[#0F1C2B] w-full min-h-50 border border-white/20 rounded-lg
                     shadow-lg p-5 pb-13 flex flex-col relative
@@ -86,6 +92,10 @@ const CollegeCard = ({ college}) => {
                    bg-slate-800/80 text-sky-400/80 border border-transparent
                    hover:border-sky-400 hover:bg-gray-900/70 hover:-translate-y-0.5
                    active:scale-95 transition-all duration-300 text-sm"
+        onClick={() => {
+          setIsDialogOpen(true);
+          setCourseArr(college.programmes);
+        }}
       >
         View Courses
       </button>
