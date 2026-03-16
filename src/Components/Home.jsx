@@ -244,7 +244,8 @@ const Home = () => {
       selections.district !== "All" ||
       selections.institution !== "All" ||
       selections.university !== "All" ||
-      selections.programme !== "All"
+      selections.programme !== "All" ||
+      searchTerm !== ""
     ) {
       setSelections((prev) => ({
         ...prev,
@@ -256,6 +257,7 @@ const Home = () => {
         search: "",
       }));
 
+      setSearchTerm("");
       notify("Filtered data has been reset");
     } else {
       notify("Already reset!");
@@ -271,11 +273,12 @@ const Home = () => {
         <div className="flex flex-wrap gap-4 max-w-6xl w-full bg-[background: rgba(255, 255, 255, 0.22);] bg-white/10 rounded-2xl shadow-lg backdrop-blur-sm border border-white/20  p-5 ">
           <input
             id="search"
-            className= {`py-2 px-3 w-full md:w-[30%] lg:w-[21%] text-[#E2E8F0] duration-500 transition-all ease-in-out placeholder:text-[#E2E8F0] ring-1 ring-sky-500  outline-none border-[#2E3A47] border rounded-lg ${loading ? "cursor-wait" : "cursor-text"}`}
+            className={`py-2 px-3 w-full md:w-[30%] lg:w-[21%] text-[#E2E8F0] duration-500 transition-all ease-in-out placeholder:text-[#E2E8F0] ring-1 ring-sky-500  outline-none border-[#2E3A47] border rounded-lg ${loading ? "cursor-wait" : "cursor-text"}`}
             type="search"
             placeholder="Enter the college name"
+            value={searchTerm}
             title={`${loading ? "Please wait,we are fetching all indian colleges data... " : "Now you can search 🔍 colleges by name..."}`}
-            readOnly = {loading && true}
+            readOnly={loading && true}
             onChange={handleSearchChange}
           />
 
