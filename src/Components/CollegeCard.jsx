@@ -20,15 +20,15 @@ function CopyField({ icon, value, accent }) {
   return (
     <div
       onClick={handleCopy}
-      className={`flex items-start ${accent ? "gap-3" : "gap-2" } pt-2 text-slate-100 cursor-pointer hover:opacity-80 transition-opacity group relative`}>
+      className={`flex items-start ${accent ? "gap-3" : "gap-2"} pt-2 text-slate-100 cursor-pointer hover:opacity-80 transition-opacity group relative`}>
       {/* Icon */}
-      <span className="w-5 h-5 shrink-0 mt-0.5 text-slate-400 group-hover:text-sky-400 transition-colors">
+      <span className="w-4 h-4 shrink-0 mt-1.5 text-slate-400 group-hover:text-sky-400 transition-colors">
         {icon}
       </span>
 
       {/* Text Value */}
       <span
-        className={`text-slate-300 wrap-break-words group-hover:text-sky-400 flex items-center gap-2 ${accent ? "font-bold text-lg text-slate-100 leading-tight" : ""}`}>
+        className={`text-slate-300 wrap-anywhere group-hover:text-sky-400 flex items-center gap-2 ${accent ? "font-bold text-lg text-slate-100 leading-tight" : ""}`}>
         {value}
       </span>
 
@@ -57,16 +57,15 @@ function CopyField({ icon, value, accent }) {
 // main collage card
 const CollegeCard = ({ college }) => {
   const { setIsDialogOpen, setCourseArr } = useContext(CourseContext);
-  
+
   return (
     <div
       className="bg-[#0F1C2B] w-full min-h-70 border border-white/20 rounded-lg
                     shadow-lg p-5 pb-16 flex flex-col relative
                     hover:shadow-2xl hover:border-white/40 hover:-translate-y-1 transition-all duration-300">
-
-       {/*1. institute name  */}
+      {/*1. institute name  */}
       <CopyField
-      accent
+        accent
         value={college.institute_name}
         icon={
           <svg
@@ -128,10 +127,10 @@ const CollegeCard = ({ college }) => {
       <CopyField
         value={college.district}
         icon={
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
               fill="currentColor"
-              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855q-.215.403-.395.872c.705.157 1.472.257 2.282.287z"
+              d="M16 10V6.85zM4.35 20.7q-.5.2-.925-.112T3 19.75v-14q0-.325.188-.575T3.7 4.8L9 3l6 2.1l4.65-1.8q.5-.2.925.113T21 4.25v8.425q-.375-.575-.888-1.05T19 10.8V5.7l-3 1.15V10q-.525 0-1.025.088T14 10.35v-3.5l-4-1.4v13.075zM5 18.3l3-1.15V5.45l-3 1zm11-.3q.85 0 1.413-.5T18 16q.025-.85-.562-1.425T16 14t-1.425.575T14 16t.575 1.425T16 18m0 2q-1.65 0-2.825-1.175T12 16t1.175-2.825T16 12t2.825 1.175T20 16q0 .575-.137 1.088t-.413.962L22 20.6L20.6 22l-2.55-2.55q-.45.275-.962.413T16 20M8 5.45v11.7z"
             />
           </svg>
         }
